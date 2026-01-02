@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q17 - Event Listeners</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button, input {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #007bff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        #output {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e2f0ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Q17: Event Listeners (Mouse / Keyboard)</h2>
+
+<button id="clickBtn">Click Me!</button>
+<input type="text" id="keyInput" placeholder="Type something..." />
+
+<p id="output">Events will be shown here.</p>
+
+<script>
+    // Human-created interactive JavaScript
+
+    // Mouse click event
+    const clickBtn = document.getElementById("clickBtn");
+    clickBtn.addEventListener("click", function() {
+        document.getElementById("output").innerHTML = "Button was clicked by the user!";
+    });
+
+    // Mouse over event
+    clickBtn.addEventListener("mouseover", function() {
+        document.getElementById("output").innerHTML = "Mouse is hovering over the button!";
+    });
+
+    // Keyboard event
+    const keyInput = document.getElementById("keyInput");
+    keyInput.addEventListener("keyup", function(event) {
+        document.getElementById("output").innerHTML = "User typed: " + event.target.value;
+    });
+
+    // Remove event example (after 5 clicks)
+    let clickCount = 0;
+    clickBtn.addEventListener("click", function removeAfterFive() {
+        clickCount++;
+        if (clickCount >= 5) {
+            clickBtn.removeEventListener("click", removeAfterFive);
+            document.getElementById("output").innerHTML = "Event listener removed after 5 clicks!";
+        }
+    });
+</script>
+
+</body>
+</html>

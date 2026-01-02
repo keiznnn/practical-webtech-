@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+
+  <style>
+    body{
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #022d6e, #8353b4);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .card{
+      background: #ffffff10;
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2{
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    input, select{
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input::placeholder{
+      color: #ddd;
+    }
+
+    button{
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #3f7bea;
+      color: #000;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover{
+      background: #00aacc;
+      transform: translateY(-2px);
+    }
+
+    #result{
+      margin-top: 25px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2> Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+
+    <select id="operator">
+      <option value="+">➕ Addition</option>
+      <option value="-">➖ Subtraction</option>
+      <option value="*">✖ Multiplication</option>
+      <option value="/">➗ Division</option>
+    </select>
+
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+
+  <script>
+    function calculate() {
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+      let op = document.getElementById("operator").value;
+
+      let output;
+
+      switch (op) {
+        case "+":
+          output = a + b;
+          break;
+        case "-":
+          output = a - b;
+          break;
+        case "*":
+          output = a * b;
+          break;
+        case "/":
+          output = b !== 0 ? (a / b).toFixed(2) : "Not possible (div by 0)";
+          break;
+      }
+
+      document.getElementById("result").innerHTML = `
+        ➤ Result: <b>${output}</b>
+      `;
+    }
+  </script>
+
+</body>
+</html>

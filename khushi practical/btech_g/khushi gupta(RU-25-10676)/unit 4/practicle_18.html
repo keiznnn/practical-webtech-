@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q18 - Create, Remove & Rename Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+            background-color: #e2f0ff;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        li[contenteditable="true"] {
+            background-color: #fff3cd;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Q18: Create, Remove & Rename List Items</h2>
+
+<button id="addBtn">Add Item</button>
+<button id="removeBtn">Remove Last Item</button>
+
+<ul id="itemList"></ul>
+
+<script>
+    const addBtn = document.getElementById("addBtn");
+    const removeBtn = document.getElementById("removeBtn");
+    const list = document.getElementById("itemList");
+
+    // Add new item
+    addBtn.addEventListener("click", function() {
+        const li = document.createElement("li");
+        li.textContent = "New Item " + (list.children.length + 1);
+        
+        // Make item editable on double click
+        li.addEventListener("dblclick", function() {
+            li.setAttribute("contenteditable", "true");
+            li.focus();
+        });
+
+        // Save on blur (focus out)
+        li.addEventListener("blur", function() {
+            li.removeAttribute("contenteditable");
+            if(li.textContent.trim() === "") {
+                li.textContent = "Untitled Item";
+            }
+        });
+
+        list.appendChild(li);
+    });
+
+    // Remove last item
+    removeBtn.addEventListener("click", function() {
+        if(list.lastChild) {
+            list.removeChild(list.lastChild);
+        } else {
+            alert("No more items to remove!");
+        }
+    });
+</script>
+
+</body>
+</html>

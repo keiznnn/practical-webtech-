@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conditional & Looping Demo</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #39507c, #0e0e0f);
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      width: 450px;
+      background: #ffffff15;
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.15);
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to   {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #e8e8e8;
+    }
+
+    pre {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 15px;
+      color: #e5e5e5;
+      overflow-x: auto;
+      border-left: 4px solid #00d4ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Conditional & Looping Demo</h2>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    let out = "";
+
+   
+    let number = 10;
+
+    if (number > 0) {
+      out += "Number is positive\n";
+    } else if (number < 0) {
+      out += "Number is negative\n";
+    } else {
+      out += "Number is zero\n";
+    }
+
+   
+    out += "\nFor loop (1 to 5):\n";
+    for (let i = 1; i <= 5; i++) {
+      out += "i = " + i + "\n";
+    }
+
+   
+    out += "\nWhile loop (1 to 3):\n";
+    let j = 1;
+    while (j <= 3) {
+      out += "j = " + j + "\n";
+      j++;
+    }
+
+ 
+    out += "\nDo-While loop (runs at least once):\n";
+    let k = 1;
+    do {
+      out += "k = " + k + "\n";
+      k++;
+    } while (k <= 2);
+
+    document.getElementById("output").textContent = out;
+  </script>
+
+</body>
+</html>

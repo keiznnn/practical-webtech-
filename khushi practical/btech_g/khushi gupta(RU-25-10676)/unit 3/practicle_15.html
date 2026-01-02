@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q15 - DOM Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .highlight {
+            background-color: lightgreen;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 id="heading">Q15: DOM Manipulation Demo</h2>
+
+<p id="para">This is a paragraph that will change.</p>
+
+<button onclick="changeText()">Change Paragraph Text</button>
+<button onclick="toggleClass()">Toggle Highlight Class</button>
+
+<script>
+    // Change text using getElementById
+    function changeText() {
+        document.getElementById("para").innerHTML = "Paragraph text changed using getElementById()!";
+    }
+
+    // Toggle class using querySelector
+    function toggleClass() {
+        document.querySelector("#heading").classList.toggle("highlight");
+    }
+</script>
+
+</body>
+</html>
